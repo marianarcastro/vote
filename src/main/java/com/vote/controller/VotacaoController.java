@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vote.entity.Associado;
+import com.vote.entity.Pauta;
 import com.vote.entity.Votacao;
 import com.vote.service.VotacaoService;
 
@@ -19,28 +20,24 @@ import com.vote.service.VotacaoService;
 public class VotacaoController {
 	
 	private final VotacaoService service;
-	private final CPFController cpfController;
 	
-	VotacaoController(VotacaoService service, CPFController cpfController) {
+	
+	VotacaoController(VotacaoService service) {
 	    this.service = service;
-		this.cpfController = cpfController;
 	}
 
-	@GetMapping("/votacao")
+	@GetMapping("/votacoes")
 	public List<Votacao> all() { 
 		return this.service.findAll();
 	}
 	
 	@RequestMapping(value="/novaVotacao", method=RequestMethod.POST, headers = "Content-type=application/*")
-	public void novaVotacao(@RequestBody Votacao votacao) {
-		this.service.abrirSessaoVotacao(votacao);
+	public void novaVotacao(@RequestBody Pauta pauta) {
+		this.service.abrirSessaoVotacao(pauta);
 	}
 	
 	@PostMapping("/votar")
-	public void votar(Votacao votacao, Associado associado) {
-		associado.setStatusCPF(cpfController.getCPF(associado.getCpf()));
-		if(associado.getStatusCPF() == "ABLE_TO_VOTE") {
-			this.service.votar(votacao, associado);
-		} 
+	public void votar(Associado associado) {
+		this.service.votar(associado);
 	}
 }

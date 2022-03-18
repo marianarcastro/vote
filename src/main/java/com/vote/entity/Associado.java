@@ -18,6 +18,7 @@ public class Associado {
 	private String statusCPF;
 	@OneToOne
 	private Pauta pauta;
+	private String voto;
 
 	public Long getId() {
 		return id;
@@ -58,5 +59,13 @@ public class Associado {
 
 	public void setPauta(Pauta pauta) {
 		this.pauta = pauta;
+	}
+
+	public String getVoto() {
+		return voto;
+	}
+
+	public void setVoto(String voto) {
+		this.voto = voto;
 	}
 }

@@ -21,6 +21,7 @@ public class Votacao {
 	@ManyToOne
 	private Pauta pauta;
 	private Long quantidadeVotos;
+	private String status;
 	
 	public Long getId() {
 		return id;
@@ -45,6 +46,12 @@ public class Votacao {
 	}
 	public void setQuantidadeVotos(Long quantidadeVotos) {
 		this.quantidadeVotos = quantidadeVotos;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }
