@@ -36,6 +36,6 @@ public class VotacaoController {
 		associado.setStatusCPF(cpfController.getCPF(associado.getCpf()));
 		if(associado.getStatusCPF() == "ABLE_TO_VOTE") {
 			this.service.votar(votacao, associado);
-		}
+		} 
 	}
 }

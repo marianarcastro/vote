@@ -18,4 +18,8 @@ public class AssociadoService {
 		return this.repository.findAll();
 	}
 
+	public void save(Associado associado) {
+		this.repository.save(associado);
+	}
+
 }
