@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vote.entity.Associado;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.vote.entity.Pauta;
 import com.vote.entity.Votacao;
+import com.vote.entity.Voto;
 import com.vote.service.VotacaoService;
 
 @RestController
@@ -36,8 +38,8 @@ public class VotacaoController {
 		this.service.abrirSessaoVotacao(pauta);
 	}
 	
-	@PostMapping("/votar")
-	public void votar(Associado associado) {
-		this.service.votar(associado);
+	@RequestMapping(value="/votar", method=RequestMethod.POST, headers = "Content-type=application/*")
+	public void votar(@RequestBody Voto voto) throws JsonMappingException, JsonProcessingException {
+		this.service.votar(voto);
 	}
 }
