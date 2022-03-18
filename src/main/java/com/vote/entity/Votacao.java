@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 public class Votacao {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@OneToMany
 	private List<Associado> associados;

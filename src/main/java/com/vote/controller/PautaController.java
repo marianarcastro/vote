@@ -2,10 +2,15 @@ package com.vote.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vote.entity.Pauta;
@@ -13,6 +18,7 @@ import com.vote.exception.PautaNotFoundException;
 import com.vote.service.PautaService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PautaController {
 	
 	private final PautaService service;
@@ -26,9 +32,10 @@ public class PautaController {
 		return service.findAll();
 	}
 
-	@PostMapping("/novaPauta")
-	public void novaPauta(@RequestBody Pauta novaPauta) {
+	@RequestMapping(value="/novaPauta", method=RequestMethod.POST, headers = "Content-type=application/*")
+	public ResponseEntity<Pauta> novaPauta(@RequestBody Pauta novaPauta) {
 		service.criarPauta(novaPauta);
+		return new ResponseEntity<Pauta>(novaPauta, HttpStatus.OK);
 	}
 
 	@GetMapping("/pauta/{id}")
