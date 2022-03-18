@@ -31,7 +31,6 @@ public class PautaController {
 		service.criarPauta(novaPauta);
 	}
 
-
 	@GetMapping("/pauta/{id}")
 	public Pauta pautaPorId(@PathVariable Long id) {
 		return service.pautaPorId(id).orElseThrow(() -> new PautaNotFoundException(id));
