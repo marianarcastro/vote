@@ -2,6 +2,7 @@ package com.vote.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,9 @@ public class Votacao {
 	private Pauta pauta;
 	private Long quantidadeVotos;
 	private String status;
+	@Column(name="associado_id")
+	private Long associadoID;
+	private String voto;
 	
 	public Long getId() {
 		return id;
@@ -52,6 +56,12 @@ public class Votacao {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getVoto() {
+		return voto;
+	}
+	public void setVoto(String voto) {
+		this.voto = voto;
 	}
 	
 }

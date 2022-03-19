@@ -5,6 +5,7 @@ public class Voto {
 	private Long associadoID;
 	private Long pautaID;
 	private Long votacaoID;
+	private String voto;
 	
 	public Long getAssociadoID() {
 		return associadoID;
@@ -24,5 +25,10 @@ public class Voto {
 	public void setVotacaoID(Long votacaoID) {
 		this.votacaoID = votacaoID;
 	}
-	
+	public String getVoto() {
+		return voto;
+	}
+	public void setVoto(String voto) {
+		this.voto = voto;
+	}
 }
