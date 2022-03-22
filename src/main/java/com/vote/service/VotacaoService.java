@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vote.controller.CPFController;
 import com.vote.entity.Associado;
-import com.vote.entity.Pauta;
 import com.vote.entity.Votacao;
 import com.vote.entity.Voto;
 import com.vote.repository.AssociadoRepository;
